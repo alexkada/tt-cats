@@ -1,0 +1,16 @@
+<div class="card mb-3" style="max-width: 540px; cursor:pointer;">
+  <div class="row no-gutters">
+    <div [routerLink]="['/cats/edit', cat.id]" class="col-md-4">
+      <app-avatar [img]="cat.img"></app-avatar>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body p-3">
+        <h5 [routerLink]="['/cats/edit', cat.id]" class="card-title">{{cat.name}}</h5>
+        <p  [routerLink]="['/cats/edit', cat.id]" class="card-text">{{cat.description}}</p>
+        <button type="button" (click)="like(cat.id)" class="btn btn-primary btn-sm">+</button>
+        <span class="mx-1">{{cat.like}}</span>
+        <button type="button" (click)="dislike(cat.id)" class="btn btn-secondary btn-sm">-</button>
+      </div>
+    </div>
+  </div>
+</div>

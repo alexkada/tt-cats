@@ -1,0 +1,5 @@
+<div class="container d-flex mt-5 flex-column align-items-center">
+  <p *ngIf="!cats.length">У нас нет котов пока</p>
+  <app-cat-item  *ngFor="let cat of cats" [cat]="cat"></app-cat-item>
+  <button type="button" routerLink="/cats/new" class="btn btn-primary">Создать</button>
+</div>

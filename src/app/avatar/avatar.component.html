@@ -1,0 +1,3 @@
+<img  (click)="isChange ? changeClickImage() : ''" [src]="img ? img : 'assets/nophoto.jpg'" style="max-width: 250px;cursor: pointer;" [class]="isChange ? 'img-thumbnail' : 'card-img'" >
+<input type="file" (change)="changeFileImage($event)" #imageCat style="display:none;">
+<div *ngIf="isChange"   (click)="isChange ? changeClickImage() : ''" style="cursor: pointer;" class="text-muted">нажмите чтобы изменить</div>

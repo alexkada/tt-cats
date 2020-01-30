@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-4 text-center">
+      <app-avatar [img]="cat.img" [isChange]="true" (onChanged)="changeImage($event)"></app-avatar>
+    </div>
+    <div class="col-8">
+      <form novalidate #form="ngForm" (ngSubmit)="save(form)">
+        <div class="form-group row">
+          <label class="col-2">Имя:</label>
+          <input required class="col-10 form-control" *ngIf="editor" name="name" #cat_name="ngModel" [(ngModel)]="cat.name" />
+          <span  *ngIf="editor && submitted && catName.invalid" class="text-danger col-10  offset-2">Имя обязательно для заполнения</span>
+          <span class="col-10" *ngIf="!editor">{{cat.name}}</span>
+        </div>
+        <div class="form-group row">
+          <label class="col-2">Описание:</label>
+          <textarea required class="col-10 form-control"  *ngIf="editor" name="description" #cat_description="ngModel" [(ngModel)]="cat.description"></textarea>
+          <span  *ngIf="editor && submitted && catDescription.invalid" class="text-danger col-10 offset-2">Описание обязательно для заполнения</span>
+          <span class="col-10" *ngIf="!editor">{{cat.description}}</span>
+        </div>
+        <div class="form-group row">
+          <label class="col-2">Лайки:</label>
+          <input required class="col-10 form-control"  *ngIf="editor" type="number" name="like" [(ngModel)]="cat.like">
+          <span  class="col-10" *ngIf="!editor">{{cat.like}}</span>
+        </div>
+        <button type="button" routerLink="/cats" class="btn btn-light">Назад</button>
+        <button  *ngIf="editor" type="submit" class="btn btn-primary ml-1" [class.btn-warning]="editing">{{editing ? "Сохранить" : "Создать"}}</button>
+        <button  *ngIf="!editor" type="button" (click)="edit()" class="btn btn-primary ml-1">Редактировать</button>
+        <button type="button" (click)="remove()" *ngIf="editing" class="btn btn-danger ml-1">Удалить</button>
+
+      </form>
+    </div>
+  </div>
+</div>
